@@ -1,11 +1,12 @@
 <?php
   // Connection to MySQL (PDO)
   function getDatabaseConnection(){
-    $host= 'localhost';
+    $host= 'makeprocess-recipe-db.c5wym8wkszlg.eu-west-3.rds.amazonaws.com'; // Pas besoin de :3306
     $dbname= 'swtrecipe_system';
-    $user= 'root';
-    $password= '';
-    $dsn= "mysql:dbname=$dbname;host=$host";
+    $user= 'admin';
+    $password= 'makeprocess';
+    $dsn= "mysql:host=$host;dbname=$dbname;charset=utf8"; // Correction ici (Ajout charset UTF-8)
+
 
     try{
       $conn= new PDO($dsn, $user, $password);

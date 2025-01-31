@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : ven. 31 jan. 2025 à 14:33
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Sep 12, 2024 at 09:08 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `swtrecipe_system`
+-- Database: `swtrecipe_system`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ingredients`
+-- Table structure for table `ingredients`
 --
 
 CREATE TABLE `ingredients` (
@@ -33,7 +33,7 @@ CREATE TABLE `ingredients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `ingredients`
+-- Dumping data for table `ingredients`
 --
 
 INSERT INTO `ingredients` (`Ingredient_ID`, `Ingredient_Name`) VALUES
@@ -379,7 +379,7 @@ INSERT INTO `ingredients` (`Ingredient_ID`, `Ingredient_Name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rcp_categories`
+-- Table structure for table `rcp_categories`
 --
 
 CREATE TABLE `rcp_categories` (
@@ -393,7 +393,7 @@ CREATE TABLE `rcp_categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `rcp_categories`
+-- Dumping data for table `rcp_categories`
 --
 
 INSERT INTO `rcp_categories` (`Category_ID`, `Category_Name`, `Category_Criteria`, `Num_of_Recipes`, `Status`, `Date_Created`, `Date_Updated`) VALUES
@@ -418,13 +418,12 @@ INSERT INTO `rcp_categories` (`Category_ID`, `Category_Name`, `Category_Criteria
 (159, 'Wedding', 'Occasion', 2, 'Active', '2024-08-13 10:03:11', '2024-08-29 04:50:28'),
 (162, 'Festival', 'Occasion', 1, 'Active', '2024-08-14 00:12:57', '2024-08-18 16:21:32'),
 (163, 'Nut-Free', 'Dietary', 3, 'Active', '2024-08-14 00:14:16', '2024-08-29 04:35:40'),
-(169, 'Spanish', 'Cuisine', 2, 'Active', '2024-08-20 14:00:42', '2024-08-29 04:20:00'),
-(170, 'catego test', 'Cuisine', 0, 'Active', '2025-01-29 17:53:53', '2025-01-29 17:53:53');
+(169, 'Spanish', 'Cuisine', 2, 'Active', '2024-08-20 14:00:42', '2024-08-29 04:20:00');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rcp_ingredients`
+-- Table structure for table `rcp_ingredients`
 --
 
 CREATE TABLE `rcp_ingredients` (
@@ -436,7 +435,7 @@ CREATE TABLE `rcp_ingredients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `rcp_ingredients`
+-- Dumping data for table `rcp_ingredients`
 --
 
 INSERT INTO `rcp_ingredients` (`Rcp_ingredient_ID`, `Recipe_ID`, `Ingredient_ID`, `Ingredient_quantity`, `Ingredient_unit`) VALUES
@@ -782,7 +781,7 @@ INSERT INTO `rcp_ingredients` (`Rcp_ingredient_ID`, `Recipe_ID`, `Ingredient_ID`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rcp_num_categories`
+-- Table structure for table `rcp_num_categories`
 --
 
 CREATE TABLE `rcp_num_categories` (
@@ -792,7 +791,7 @@ CREATE TABLE `rcp_num_categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `rcp_num_categories`
+-- Dumping data for table `rcp_num_categories`
 --
 
 INSERT INTO `rcp_num_categories` (`Rcp_category_ID`, `Recipe_ID`, `Category_ID`) VALUES
@@ -896,7 +895,7 @@ INSERT INTO `rcp_num_categories` (`Rcp_category_ID`, `Recipe_ID`, `Category_ID`)
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rcp_reminders`
+-- Table structure for table `rcp_reminders`
 --
 
 CREATE TABLE `rcp_reminders` (
@@ -906,7 +905,7 @@ CREATE TABLE `rcp_reminders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `rcp_reminders`
+-- Dumping data for table `rcp_reminders`
 --
 
 INSERT INTO `rcp_reminders` (`Rcp_reminder_ID`, `Recipe_ID`, `Reminder_description`) VALUES
@@ -1017,7 +1016,7 @@ INSERT INTO `rcp_reminders` (`Rcp_reminder_ID`, `Recipe_ID`, `Reminder_descripti
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rcp_steps`
+-- Table structure for table `rcp_steps`
 --
 
 CREATE TABLE `rcp_steps` (
@@ -1028,7 +1027,7 @@ CREATE TABLE `rcp_steps` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `rcp_steps`
+-- Dumping data for table `rcp_steps`
 --
 
 INSERT INTO `rcp_steps` (`Rcp_step_ID`, `Recipe_ID`, `Step_num`, `Step_description`) VALUES
@@ -1309,7 +1308,7 @@ INSERT INTO `rcp_steps` (`Rcp_step_ID`, `Recipe_ID`, `Step_num`, `Step_descripti
 -- --------------------------------------------------------
 
 --
--- Structure de la table `recipes`
+-- Table structure for table `recipes`
 --
 
 CREATE TABLE `recipes` (
@@ -1326,7 +1325,7 @@ CREATE TABLE `recipes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `recipes`
+-- Dumping data for table `recipes`
 --
 
 INSERT INTO `recipes` (`Recipe_ID`, `User_ID`, `Recipe_Name`, `Rcp_Description`, `Preparation_Time`, `Cook_Time`, `Servings`, `Rcp_Picture`, `Date_Created`, `Date_Updated`) VALUES
@@ -1364,7 +1363,7 @@ INSERT INTO `recipes` (`Recipe_ID`, `User_ID`, `Recipe_Name`, `Rcp_Description`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -1381,7 +1380,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`User_ID`, `First_Name`, `Last_Name`, `Gender`, `Email`, `Role`, `Password`, `Status`, `Created_at`, `Update_at`) VALUES
@@ -1396,28 +1395,26 @@ INSERT INTO `users` (`User_ID`, `First_Name`, `Last_Name`, `Gender`, `Email`, `R
 (18, 'Joan Margaret', 'Colasito', 'Female', 'joanacola@gmail.com', 'Baker', '$2y$10$iliq9eW/ux16p4QPDYrvUeM0VCtHl0DDvEZAZuEG060AifAGXjMky', 'Active', '2024-09-12 06:53:33', '2024-09-12 06:53:33'),
 (19, 'Hannel', 'Maurillo', 'Female', 'hannel_maurillo22@outlook.com', 'Baker', '$2y$10$9bQhgEb5dFSTQlsnVQTm7uABNsoKWN8HXi75KkWGogcNc2aEv46Z.', 'Active', '2024-09-12 06:57:19', '2024-09-12 06:57:19'),
 (20, 'Harry', 'Benedict', 'Male', 'beneclick1222@gmail.com', 'Baker', '$2y$10$CEDY7pgrPs5Pw/CLaLxHR.CS0LOiKrWzgGv7hE5RZhvr54ESqoq5K', 'Deactivated', '2024-09-12 06:57:53', '2024-09-12 06:57:57'),
-(21, 'Bevirlie Jane', 'Ladrera', 'Female', 'bev123@gmail.com', 'Baker', '$2y$10$ZHcJKl.dLtePglzkKlar7.EoSLTWQHOlQ//H4IZIJMeQq/i/T3jEe', 'Active', '2024-09-12 06:58:59', '2024-09-12 06:58:59'),
-(22, 'admin', 'joel', 'Male', 'admin@gmail.com', 'Admin', '$2y$10$bIyKFuLOAjaAAY5c4BBggeV0LCNXpgwkwNXTPF9JmyxKGI9njYIbq', 'Active', '2025-01-29 17:50:51', '2025-01-29 17:50:51'),
-(24, 'boulanger', 'joel boulanger', 'Male', 'boulanger@gmail.com', 'Baker', '$2y$10$HczF3lMniViK.lkBlhCiDO8GsfhEH77jbBMKApG2A8qAtqt9D2Kz6', 'Active', '2025-01-29 18:05:21', '2025-01-29 18:05:21');
+(21, 'Bevirlie Jane', 'Ladrera', 'Female', 'bev123@gmail.com', 'Baker', '$2y$10$ZHcJKl.dLtePglzkKlar7.EoSLTWQHOlQ//H4IZIJMeQq/i/T3jEe', 'Active', '2024-09-12 06:58:59', '2024-09-12 06:58:59');
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `ingredients`
+-- Indexes for table `ingredients`
 --
 ALTER TABLE `ingredients`
   ADD PRIMARY KEY (`Ingredient_ID`);
 
 --
--- Index pour la table `rcp_categories`
+-- Indexes for table `rcp_categories`
 --
 ALTER TABLE `rcp_categories`
   ADD PRIMARY KEY (`Category_ID`);
 
 --
--- Index pour la table `rcp_ingredients`
+-- Indexes for table `rcp_ingredients`
 --
 ALTER TABLE `rcp_ingredients`
   ADD PRIMARY KEY (`Rcp_ingredient_ID`),
@@ -1425,7 +1422,7 @@ ALTER TABLE `rcp_ingredients`
   ADD KEY `Recipe_ID` (`Recipe_ID`);
 
 --
--- Index pour la table `rcp_num_categories`
+-- Indexes for table `rcp_num_categories`
 --
 ALTER TABLE `rcp_num_categories`
   ADD PRIMARY KEY (`Rcp_category_ID`),
@@ -1433,117 +1430,117 @@ ALTER TABLE `rcp_num_categories`
   ADD KEY `rcp_num_categories_ibfk_2` (`Category_ID`);
 
 --
--- Index pour la table `rcp_reminders`
+-- Indexes for table `rcp_reminders`
 --
 ALTER TABLE `rcp_reminders`
   ADD PRIMARY KEY (`Rcp_reminder_ID`),
   ADD KEY `Foreign_Key` (`Recipe_ID`);
 
 --
--- Index pour la table `rcp_steps`
+-- Indexes for table `rcp_steps`
 --
 ALTER TABLE `rcp_steps`
   ADD PRIMARY KEY (`Rcp_step_ID`),
   ADD KEY `Foreign_Key` (`Recipe_ID`) USING BTREE;
 
 --
--- Index pour la table `recipes`
+-- Indexes for table `recipes`
 --
 ALTER TABLE `recipes`
   ADD PRIMARY KEY (`Recipe_ID`),
   ADD KEY `Foreign_Key2` (`User_ID`) USING BTREE;
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`User_ID`),
   ADD UNIQUE KEY `User_verify` (`Email`) USING BTREE;
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `ingredients`
+-- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
   MODIFY `Ingredient_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1741;
 
 --
--- AUTO_INCREMENT pour la table `rcp_categories`
+-- AUTO_INCREMENT for table `rcp_categories`
 --
 ALTER TABLE `rcp_categories`
-  MODIFY `Category_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `Category_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
--- AUTO_INCREMENT pour la table `rcp_ingredients`
+-- AUTO_INCREMENT for table `rcp_ingredients`
 --
 ALTER TABLE `rcp_ingredients`
   MODIFY `Rcp_ingredient_ID` bigint(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1872;
 
 --
--- AUTO_INCREMENT pour la table `rcp_num_categories`
+-- AUTO_INCREMENT for table `rcp_num_categories`
 --
 ALTER TABLE `rcp_num_categories`
   MODIFY `Rcp_category_ID` bigint(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=765;
 
 --
--- AUTO_INCREMENT pour la table `rcp_reminders`
+-- AUTO_INCREMENT for table `rcp_reminders`
 --
 ALTER TABLE `rcp_reminders`
   MODIFY `Rcp_reminder_ID` bigint(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=366;
 
 --
--- AUTO_INCREMENT pour la table `rcp_steps`
+-- AUTO_INCREMENT for table `rcp_steps`
 --
 ALTER TABLE `rcp_steps`
   MODIFY `Rcp_step_ID` bigint(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1190;
 
 --
--- AUTO_INCREMENT pour la table `recipes`
+-- AUTO_INCREMENT for table `recipes`
 --
 ALTER TABLE `recipes`
   MODIFY `Recipe_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1138;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `User_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `User_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `rcp_ingredients`
+-- Constraints for table `rcp_ingredients`
 --
 ALTER TABLE `rcp_ingredients`
   ADD CONSTRAINT `rcp_ingredients_ibfk_4` FOREIGN KEY (`Recipe_ID`) REFERENCES `recipes` (`Recipe_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `rcp_ingredients_ibfk_5` FOREIGN KEY (`Ingredient_ID`) REFERENCES `ingredients` (`Ingredient_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `rcp_num_categories`
+-- Constraints for table `rcp_num_categories`
 --
 ALTER TABLE `rcp_num_categories`
   ADD CONSTRAINT `rcp_num_categories_ibfk_1` FOREIGN KEY (`Recipe_ID`) REFERENCES `recipes` (`Recipe_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `rcp_num_categories_ibfk_2` FOREIGN KEY (`Category_ID`) REFERENCES `rcp_categories` (`Category_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `rcp_reminders`
+-- Constraints for table `rcp_reminders`
 --
 ALTER TABLE `rcp_reminders`
   ADD CONSTRAINT `rcp_reminders_ibfk_1` FOREIGN KEY (`Recipe_ID`) REFERENCES `recipes` (`Recipe_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `rcp_steps`
+-- Constraints for table `rcp_steps`
 --
 ALTER TABLE `rcp_steps`
   ADD CONSTRAINT `rcp_steps_ibfk_1` FOREIGN KEY (`Recipe_ID`) REFERENCES `recipes` (`Recipe_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `recipes`
+-- Constraints for table `recipes`
 --
 ALTER TABLE `recipes`
   ADD CONSTRAINT `recipes_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`User_ID`) ON UPDATE CASCADE;
