@@ -1,5 +1,5 @@
 <?php
-require_once ('C:\xampp\htdocs\RecipeSharing_WebApp\functions.php');
+require_once (__DIR__ . '/../functions.php');
 
 session_start();
 session_unset();

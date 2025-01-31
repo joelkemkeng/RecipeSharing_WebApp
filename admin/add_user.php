@@ -1,10 +1,10 @@
 <?php
   session_start();
-  require_once('C:\xampp\htdocs\RecipeSharing_WebApp\functions.php');
+  require_once(__DIR__ . '/../functions.php');
 
   if (!isset($_SESSION['useremail']) && !isset($_SESSION['userpass'])){
     // Not logged in or not an admin
-    header("Location: http://localhost/RecipeSharing_WebApp/login/signin.php");
+    header("Location: http://15.188.49.243/RecipeSharing_WebApp/login/signin.php");
     exit();
   }
 
@@ -72,7 +72,7 @@
 
     if(empty($f_error) && empty($l_error) && empty($gender_error) && empty($role_error) && empty($emailerror) && empty($passworderror)){
       insertdata($fname, $lname, $gender, $email, $role, $password);
-      header("Location: http://localhost/RecipeSharing_WebApp/admin/index.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/admin/index.php");
       exit();
     }
   }
@@ -84,36 +84,36 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SimpleSweets Recipe Sharing Application</title>
-  <link rel="icon" type="image/jpg" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/cookielogo.png">
+  <link rel="icon" type="image/jpg" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/cookielogo.png">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Russo+One&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <?php require('C:\xampp\htdocs\RecipeSharing_WebApp\navbar.php'); ?>
+  <?php require(__DIR__ . '/../navbar.php'); ?>
   <!-- /.navbar -->
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-dark">
     <!-- Brand Logo -->
-    <?php require('C:\xampp\htdocs\RecipeSharing_WebApp\headlogo_sidebar.php'); ?>
+    <?php require(__DIR__ . '/../headlogo_sidebar.php'); ?>
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="http://localhost/RecipeSharing_WebApp/assets/dist/img/Idpic.png" class="img-circle img-fluid img-bordered-sm" style="width: 60px;" alt="User Image" >
+          <img src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/img/Idpic.png" class="img-circle img-fluid img-bordered-sm" style="width: 60px;" alt="User Image" >
         </div>
         <div class="info">
         <h5 class="text-wrap"><b><?php echo $_SESSION['user_name']; ?></b></h5>
         <form action="" method="post">
-        <h6 class="m-0"><a href="http://localhost/RecipeSharing_WebApp/admin/updateprofile.php?user_id=<?php echo htmlentities($_SESSION['userID']); ?>" class="link h7 mr-1" title="Edit Profile"><i class="bi bi-person-lines-fill h5 border rounded px-1"></i></a><span class="badge border border-secondary text-uppercase" style="vertical-align: top; color:#a07b4a"> <?php echo htmlentities($_SESSION['user_role']); ?></span></h6>
+        <h6 class="m-0"><a href="http://15.188.49.243/RecipeSharing_WebApp/admin/updateprofile.php?user_id=<?php echo htmlentities($_SESSION['userID']); ?>" class="link h7 mr-1" title="Edit Profile"><i class="bi bi-person-lines-fill h5 border rounded px-1"></i></a><span class="badge border border-secondary text-uppercase" style="vertical-align: top; color:#a07b4a"> <?php echo htmlentities($_SESSION['user_role']); ?></span></h6>
         </form>
       </div>
     </div>
@@ -136,7 +136,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
               <li class="nav-item">
-                <a href="http://localhost/RecipeSharing_WebApp/admin/dashboard.php" class="nav-link">
+                <a href="http://15.188.49.243/RecipeSharing_WebApp/admin/dashboard.php" class="nav-link">
                 <i class="nav-icon bi bi-columns-gap"></i>
                   <p>Dashboard</p>
                 </a>
@@ -152,13 +152,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="http://localhost/RecipeSharing_WebApp/admin/index.php" class="nav-link">
+                <a href="http://15.188.49.243/RecipeSharing_WebApp/admin/index.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="http://localhost/RecipeSharing_WebApp/admin/add_user.php" class="nav-link active bg-gray">
+                <a href="http://15.188.49.243/RecipeSharing_WebApp/admin/add_user.php" class="nav-link active bg-gray">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add User</p>
                 </a>
@@ -174,19 +174,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="http://localhost/RecipeSharing_WebApp/admin/rcp_category.php" class="nav-link">
+                    <a href="http://15.188.49.243/RecipeSharing_WebApp/admin/rcp_category.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                         <p>Manage Categories</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="http://localhost/RecipeSharing_WebApp/admin/add_category.php" class="nav-link">
+                    <a href="http://15.188.49.243/RecipeSharing_WebApp/admin/add_category.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Add Category</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="http://localhost/RecipeSharing_WebApp/admin/archive_category.php" class="nav-link">
+                    <a href="http://15.188.49.243/RecipeSharing_WebApp/admin/archive_category.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Archived Categories</p>
                     </a>
@@ -233,7 +233,7 @@
             <div class="card">
               <div class="card-header bg-dark d-inline-flex align-items-center">
                 <h4 class="my-0">User Details</h4>
-                <a href="http://localhost/RecipeSharing_WebApp/admin/index.php" class="btn ml-auto">
+                <a href="http://15.188.49.243/RecipeSharing_WebApp/admin/index.php" class="btn ml-auto">
                   <i class="bi bi-arrow-return-left h5"></i>
                 </a>
               </div>
@@ -300,18 +300,18 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<?php require('C:\xampp\htdocs\RecipeSharing_WebApp\footer_page.php'); ?>
+<?php require(__DIR__ . '/../footer_page.php'); ?>
 
 <!-- jQuery -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/jquery/jquery.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- bs-custom-file-input -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/dist/js/adminlte.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/dist/js/demo.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
 $(function () {

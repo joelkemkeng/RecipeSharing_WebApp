@@ -36,7 +36,7 @@
         </div>
       </li>
       <li class="nav-item pl-0">
-        <a class="nav-link" href="http://localhost/RecipeSharing_WebApp/login/signout.php"><i class="bi bi-box-arrow-right mr-1" style="font-size:large;"></i> Logout</a>
+        <a class="nav-link" href="http://15.188.49.243/RecipeSharing_WebApp/login/signout.php"><i class="bi bi-box-arrow-right mr-1" style="font-size:large;"></i> Logout</a>
       </li>
     </ul>
 </nav>

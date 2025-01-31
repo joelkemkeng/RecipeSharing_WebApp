@@ -1,5 +1,5 @@
 <?php
-  require_once('C:\xampp\htdocs\RecipeSharing_WebApp\functions.php');
+  require_once(__DIR__ . '/../functions.php');
   $result1= retrieve_dessert_type();
   $result2= retrieve_dietary();
   $result3= retrieve_cuisine();
@@ -22,17 +22,17 @@
    <meta name="IT263Act" content="">
    <meta name="author" content="">
    <title>SimpleSweets Recipe Sharing Application</title>
-   <link rel="icon" type="image/jpg" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/cookielogo.png">
+   <link rel="icon" type="image/jpg" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/cookielogo.png">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Russo+One&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/fontawesome-free/css/all.min.css">
+   <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/fontawesome-free/css/all.min.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
    <!-- Favicons -->
    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -69,10 +69,10 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active mr-2 pr-2" style="font-size: 0.9rem;" aria-current="page" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/rcp_homepage.php">Home</a>
+          <a class="nav-link active mr-2 pr-2" style="font-size: 0.9rem;" aria-current="page" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/rcp_homepage.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link mr-2 pr-2"  style="font-size: 0.9rem;" aria-current="page" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/allrecipe_page.php">All Recipes</a>
+          <a class="nav-link mr-2 pr-2"  style="font-size: 0.9rem;" aria-current="page" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/allrecipe_page.php">All Recipes</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle <?php echo in_array($category_name, array_column($result1, 'Category_Name')) ? 'active' : ''; ?>" style="font-size: 0.9rem;" data-bs-toggle="dropdown" aria-expanded="true">
@@ -80,7 +80,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end dark-mode">
           <?php foreach ($result1 as $index => $category): ?>
-            <li><a class="dropdown-item text-sm py-1 <?php echo $category['Category_Name'] == $category_name ? 'active bg-gradient-orange disabled' : ''; ?>" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/allrecipe_page.php?ctr_name=<?php echo urlencode($category['Category_Name']); ?>"><?php echo $category['Category_Name'];?></a></li>
+            <li><a class="dropdown-item text-sm py-1 <?php echo $category['Category_Name'] == $category_name ? 'active bg-gradient-orange disabled' : ''; ?>" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/allrecipe_page.php?ctr_name=<?php echo urlencode($category['Category_Name']); ?>"><?php echo $category['Category_Name'];?></a></li>
             <?php if ($index < count($result1) - 1): ?>
                 <hr class="dropdown-divider my-0">
               <?php endif; ?>
@@ -93,7 +93,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end dark-mode">
           <?php foreach ($result2 as $index => $category): ?>
-            <li><a class="dropdown-item text-sm py-1 <?php echo $category['Category_Name'] == $category_name ? 'active bg-gradient-orange disabled' : ''; ?>" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/allrecipe_page.php?ctr_name=<?php echo urlencode($category['Category_Name']); ?>"><?php echo $category['Category_Name'];?></a></li>
+            <li><a class="dropdown-item text-sm py-1 <?php echo $category['Category_Name'] == $category_name ? 'active bg-gradient-orange disabled' : ''; ?>" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/allrecipe_page.php?ctr_name=<?php echo urlencode($category['Category_Name']); ?>"><?php echo $category['Category_Name'];?></a></li>
             <?php if ($index < count($result2) - 1): ?>
                 <hr class="dropdown-divider my-0">
               <?php endif; ?>
@@ -106,7 +106,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end dark-mode">
           <?php foreach ($result3 as $index => $category): ?>
-            <li><a class="dropdown-item text-sm py-1 <?php echo $category['Category_Name'] == $category_name ? 'active bg-gradient-orange disabled' : ''; ?>" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/allrecipe_page.php?ctr_name=<?php echo urlencode($category['Category_Name']); ?>"><?php echo $category['Category_Name'];?></a></li>
+            <li><a class="dropdown-item text-sm py-1 <?php echo $category['Category_Name'] == $category_name ? 'active bg-gradient-orange disabled' : ''; ?>" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/allrecipe_page.php?ctr_name=<?php echo urlencode($category['Category_Name']); ?>"><?php echo $category['Category_Name'];?></a></li>
             <?php if ($index < count($result3) - 1): ?>
                 <hr class="dropdown-divider my-0">
               <?php endif; ?>
@@ -119,7 +119,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end dark-mode">
           <?php foreach ($result4 as $index => $category): ?>
-            <li><a class="dropdown-item text-sm py-1 <?php echo $category['Category_Name'] == $category_name ? 'active bg-gradient-orange disabled' : ''; ?>" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/allrecipe_page.php?ctr_name=<?php echo urlencode($category['Category_Name']); ?>"><?php echo $category['Category_Name'];?></a></li>
+            <li><a class="dropdown-item text-sm py-1 <?php echo $category['Category_Name'] == $category_name ? 'active bg-gradient-orange disabled' : ''; ?>" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/allrecipe_page.php?ctr_name=<?php echo urlencode($category['Category_Name']); ?>"><?php echo $category['Category_Name'];?></a></li>
             <?php if ($index < count($result4) - 1): ?>
                 <hr class="dropdown-divider my-0">
               <?php endif; ?>
@@ -148,7 +148,7 @@
         </div>
         </li>
         <li class="nav-item">
-          <a class="btn btn-link text-dark py-1 px-3 ml-3" href="http://localhost/RecipeSharing_WebApp/login/signin.php" style= "background-color:#fda41f;"><i class="bi bi-person-circle fs-5"></i><h7> Sign in</h7></a>
+          <a class="btn btn-link text-dark py-1 px-3 ml-3" href="http://15.188.49.243/RecipeSharing_WebApp/login/signin.php" style= "background-color:#fda41f;"><i class="bi bi-person-circle fs-5"></i><h7> Sign in</h7></a>
         </li>
       </ul>
     </div>
@@ -293,7 +293,7 @@
     } else{
       if (isset($result_recent) && !empty($result_recent)) {
         foreach ($result_recent as $key => $row) {
-          $imagePath = 'http://localhost/RecipeSharing_WebApp/baker/'.$row['Rcp_Picture'];
+          $imagePath = 'http://15.188.49.243/RecipeSharing_WebApp/baker/'.$row['Rcp_Picture'];
           echo '<div class="col-3 my-1">
                     <div class="card img-thumbnail" style="box-shadow: 0px 5px 10px rgba(31, 31, 31, 0.993);">
                       <span class="position-absolute translate-middle p-1 bg-gradient-red border-dark shadow-lg rounded-circle" style="top: 173px; right: -15px; border: 3px solid blue">
@@ -304,7 +304,7 @@
                         <h4 class="text-nowrap border-bottom pb-1" style= "overflow: hidden; text-overflow: ellipsis;">'.$row['Recipe_Name'].'</h4>
                         <p class="text-secondary mr-2 my-0 text-nowrap"><i class="bi bi-alarm"></i><small> '.$row['Preparation_Time'].' mins ‖ '.$row['Cook_Time'].' mins ‖ <i class="bi bi-cookie fs-6"></i> '.$row['Servings'].' servings</small></p>          
                     </div>
-                      <a href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/recipepage.php?recipe_id='.htmlentities($row['Recipe_ID']).'"  class="col text-monospace btn bg-orange btn-link">View Recipe</a>
+                      <a href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/recipepage.php?recipe_id='.htmlentities($row['Recipe_ID']).'"  class="col text-monospace btn bg-orange btn-link">View Recipe</a>
                   </div>
           </div>';
         }
@@ -327,7 +327,7 @@
     } else{
       if (isset($result) && !empty($result)) {
         foreach ($result as $key => $row) {
-          $imagePath = 'http://localhost/RecipeSharing_WebApp/baker/'.$row['Rcp_Picture'];
+          $imagePath = 'http://15.188.49.243/RecipeSharing_WebApp/baker/'.$row['Rcp_Picture'];
           echo '<div class="col-3 my-1">
                     <div class="card img-thumbnail" style="box-shadow: 0px 5px 10px rgba(31, 31, 31, 0.993);">
                       <img src="'.$imagePath.'" alt="Recipe Image" width="100%" height="200rem" class="recipes"></img>
@@ -335,7 +335,7 @@
                         <h4 class="text-nowrap border-bottom pb-1" style= "overflow: hidden; text-overflow: ellipsis;">'.$row['Recipe_Name'].'</h4>
                         <p class="text-secondary mr-2 my-0 text-nowrap"><i class="bi bi-alarm"></i><small> '.$row['Preparation_Time'].' mins ‖ '.$row['Cook_Time'].' mins ‖ <i class="bi bi-cookie fs-6"></i> '.$row['Servings'].' servings</small></p>          
                     </div>
-                      <a href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/recipepage.php?recipe_id='.htmlentities($row['Recipe_ID']).'"  class="col text-monospace btn bg-orange btn-link">View Recipe</a>
+                      <a href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/recipepage.php?recipe_id='.htmlentities($row['Recipe_ID']).'"  class="col text-monospace btn bg-orange btn-link">View Recipe</a>
                   </div>
           </div>';
         }
@@ -435,34 +435,34 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 <!-- jQuery -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/jquery/jquery.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Select2 -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/select2/js/select2.full.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/select2/js/select2.full.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- InputMask -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/moment/moment.min.js"></script>
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/inputmask/jquery.inputmask.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/moment/moment.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/inputmask/jquery.inputmask.min.js"></script>
 <!-- date-range-picker -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap color picker -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Bootstrap Switch -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- BS-Stepper -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
 <!-- dropzonejs -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/dropzone/min/dropzone.min.js"></script>
 <!-- bs-custom-file-input -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/dist/js/adminlte.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/dist/js/demo.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/js/demo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script>
   $(document).ready(function() {

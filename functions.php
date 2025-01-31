@@ -132,7 +132,7 @@
 
     if($response){
       $_SESSION['message_display'] = "User has been updated successfully!";
-      header("Location: http://localhost/RecipeSharing_WebApp/admin/index.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/admin/index.php");
       exit();
     }
     else{
@@ -160,11 +160,11 @@
 
     if($response && $_SESSION['user_role'] == 'Admin'){
       $_SESSION['message_displayprofile'] = "Your profile has been updated successfully!";
-      header("Location: http://localhost/RecipeSharing_WebApp/admin/dashboard.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/admin/dashboard.php");
       exit();
     } elseif($response && $_SESSION['user_role'] == 'Baker'){
       $_SESSION['message_displayprofile'] = "Your profile has been updated successfully!";
-      header("Location: http://localhost/RecipeSharing_WebApp/baker/dashboard2.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/baker/dashboard2.php");
       exit();
     }
     else{
@@ -188,7 +188,7 @@
 
     if($response){
       $_SESSION['message_display'] = "User has been deactivated successfully!";
-      header("Location: http://localhost/RecipeSharing_WebApp/admin/index.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/admin/index.php");
       exit();
     } else{
       echo "Failed!";
@@ -211,7 +211,7 @@
 
     if($response){
       $_SESSION['message_display'] = "User has been reactivated successfully!";
-      header("Location: http://localhost/RecipeSharing_WebApp/admin/index.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/admin/index.php");
       exit();
     } else{
       echo "Failed!";
@@ -420,7 +420,7 @@
 
     if($response){
       $_SESSION['message_display2'] = "Recipe category has been updated successfully!";
-      header("Location: http://localhost/RecipeSharing_WebApp/admin/rcp_category.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/admin/rcp_category.php");
       exit();
     }
     else{
@@ -442,7 +442,7 @@
 
     if($response){
       $_SESSION['message_display2'] = "Recipe category has been deleted successfully!";
-      header("Location: http://localhost/RecipeSharing_WebApp/admin/rcp_category.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/admin/rcp_category.php");
       exit();
     } else{
       echo "Failed!";
@@ -465,7 +465,7 @@
 
     if($response){
       $_SESSION['message_display2'] = "Recipe category has been archived successfully!";
-      header("Location: http://localhost/RecipeSharing_WebApp/admin/rcp_category.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/admin/rcp_category.php");
       exit();
     } else{
       echo "Failed!";
@@ -488,7 +488,7 @@
 
     if($response){
       $_SESSION['message_display2'] = "Recipe category has been restored successfully!";
-      header("Location: http://localhost/RecipeSharing_WebApp/admin/archive_category.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/admin/archive_category.php");
       exit();
     } else{
       echo "Failed!";
@@ -789,7 +789,7 @@
 
     if($response){
       $_SESSION['message_display3'] = "Recipe has been permanently deleted!";
-      header("Location: http://localhost/RecipeSharing_WebApp/baker/index2.php");
+      header("Location: http://15.188.49.243/RecipeSharing_WebApp/baker/index2.php");
       exit();
     } else{
       echo "Failed!";

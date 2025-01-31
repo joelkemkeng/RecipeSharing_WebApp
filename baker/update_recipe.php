@@ -1,6 +1,6 @@
 <?php
   session_start();
-  require_once('C:\xampp\htdocs\RecipeSharing_WebApp\functions.php');
+  require_once(__DIR__ . '/../functions.php');
   $result1= retrieve_dessert_type();
   $result2= retrieve_dietary();
   $result3= retrieve_cuisine();
@@ -9,7 +9,7 @@
 
   if (!isset($_SESSION['useremail']) && !isset($_SESSION['userpass'])){
     // Not logged in or not an admin
-    header("Location: http://localhost/RecipeSharing_WebApp/login/signin.php");
+    header("Location: http://15.188.49.243/RecipeSharing_WebApp/login/signin.php");
     exit();
   }
 
@@ -168,14 +168,14 @@
       }
     }
 
-    if($Rcp_Picture === 'http://localhost/RecipeSharing_WebApp/assets/dist/img/default_image.jpg'){
+    if($Rcp_Picture === 'http://15.188.49.243/RecipeSharing_WebApp/assets/dist/img/default_image.jpg'){
       $pic_error= "Required";
     }
 
     if(empty($rcp_error) && empty($descrp_error) && empty($prep_error) && empty($cook_error) && empty($serving_error) && empty($categoryerror) && empty($ingred_error) && empty($steperror) && empty($reminderror) && empty($pic_error)){
       try{
         updatedata3($Recipe_ID, $Recipe_Name, $Rcp_Description, $Preparation_Time, $Cook_Time, $Servings, $Rcp_Picture, $Category_Names, $ingredients, $quantities, $units, $steps, $reminders);
-        header("Location: http://localhost/RecipeSharing_WebApp/baker/index2.php");
+        header("Location: http://15.188.49.243/RecipeSharing_WebApp/baker/index2.php");
         exit();
       } catch(Exception $e){
         echo "Error: " . htmlspecialchars($e->getMessage());
@@ -190,40 +190,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SimpleSweets Recipe Sharing Application</title>
-  <link rel="icon" type="image/jpg" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/cookielogo.png">
+  <link rel="icon" type="image/jpg" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/cookielogo.png">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Russo+One&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <?php require('C:\xampp\htdocs\RecipeSharing_WebApp\navbar.php'); ?>
+  <?php require(__DIR__ . '/../navbar.php'); ?>
   <!-- /.navbar -->
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-dark">
     <!-- Brand Logo -->
-    <?php require('C:\xampp\htdocs\RecipeSharing_WebApp\headlogo_sidebar.php'); ?>
+    <?php require(__DIR__ . '/../headlogo_sidebar.php'); ?>
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="http://localhost/RecipeSharing_WebApp/assets/dist/img/Idpic.png" class="img-circle img-fluid img-bordered-sm" style="width: 60px;" alt="User Image" >
+          <img src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/img/Idpic.png" class="img-circle img-fluid img-bordered-sm" style="width: 60px;" alt="User Image" >
         </div>
         <div class="info">
         <h5 class="text-wrap"><b><?php echo $_SESSION['user_name']; ?></b></h5>
         <form action="" method="post">
-        <h6 class="m-0"><a href="http://localhost/RecipeSharing_WebApp/baker/updateuser_profile.php?user_id=<?php echo htmlentities($_SESSION['userID']); ?>" class="link h7 mr-1" title="Edit Profile"><i class="bi bi-person-lines-fill h5 border rounded px-1"></i></a><span class="badge border border-secondary text-uppercase" style="vertical-align: top; color:#a07b4a"> <?php echo htmlentities($_SESSION['user_role']); ?></span></h6>
+        <h6 class="m-0"><a href="http://15.188.49.243/RecipeSharing_WebApp/baker/updateuser_profile.php?user_id=<?php echo htmlentities($_SESSION['userID']); ?>" class="link h7 mr-1" title="Edit Profile"><i class="bi bi-person-lines-fill h5 border rounded px-1"></i></a><span class="badge border border-secondary text-uppercase" style="vertical-align: top; color:#a07b4a"> <?php echo htmlentities($_SESSION['user_role']); ?></span></h6>
         </form>
       </div>
     </div>
@@ -246,7 +246,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
               <li class="nav-item">
-                <a href="http://localhost/RecipeSharing_WebApp/baker/dashboard2.php" class="nav-link">
+                <a href="http://15.188.49.243/RecipeSharing_WebApp/baker/dashboard2.php" class="nav-link">
                 <i class="nav-icon bi bi-columns-gap"></i>
                   <p>Dashboard</p>
                 </a>
@@ -262,13 +262,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="http://localhost/RecipeSharing_WebApp/baker/index2.php" class="nav-link active bg-gray">
+                <a href="http://15.188.49.243/RecipeSharing_WebApp/baker/index2.php" class="nav-link active bg-gray">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Recipes</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="http://localhost/RecipeSharing_WebApp/baker/add_recipe.php" class="nav-link">
+                <a href="http://15.188.49.243/RecipeSharing_WebApp/baker/add_recipe.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Recipe</p>
                 </a>
@@ -315,7 +315,7 @@
             <div class="card">
               <div class="card-header bg-dark d-inline-flex align-items-center py-2">
                 <h5 class="my-0">Recipe Details</h5>
-                <a href="http://localhost/RecipeSharing_WebApp/baker/index2.php" class="btn ml-auto">
+                <a href="http://15.188.49.243/RecipeSharing_WebApp/baker/index2.php" class="btn ml-auto">
                   <i class="bi bi-arrow-return-left h5"></i>
                 </a>
               </div>
@@ -572,34 +572,34 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<?php require('C:\xampp\htdocs\RecipeSharing_WebApp\footer_page.php'); ?>
+<?php require(__DIR__ . '/../footer_page.php'); ?>
 
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/jquery/jquery.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Select2 -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/select2/js/select2.full.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/select2/js/select2.full.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- InputMask -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/moment/moment.min.js"></script>
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/inputmask/jquery.inputmask.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/moment/moment.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/inputmask/jquery.inputmask.min.js"></script>
 <!-- date-range-picker -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap color picker -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Bootstrap Switch -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- BS-Stepper -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
 <!-- dropzonejs -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/dropzone/min/dropzone.min.js"></script>
 <!-- AdminLTE App -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/dist/js/adminlte.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/dist/js/demo.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/js/demo.js"></script>
 <script>
 $(function () {
   bsCustomFileInput.init();

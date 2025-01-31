@@ -1,5 +1,5 @@
 <?php  
-require_once ('C:\xampp\htdocs\RecipeSharing_WebApp\functions.php');
+require_once (__DIR__ . '/../functions.php');
 session_start();
 
 //Signin Form Validation
@@ -46,23 +46,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         // User Page Accessibility
         if($_SESSION['user_role'] == 'Admin' && $_SESSION['user_status'] == 'Active'){
-          header("Location: http://localhost/RecipeSharing_WebApp/admin/dashboard.php"); // Redirect to the Admin page
+          header("Location: http://15.188.49.243/RecipeSharing_WebApp/admin/dashboard.php"); // Redirect to the Admin page
           exit();
         } elseif($_SESSION['user_role'] == 'Baker' && $_SESSION['user_status'] == 'Active'){
-          header("Location: http://localhost/RecipeSharing_WebApp/baker/dashboard2.php"); // Redirect to the Baker page
+          header("Location: http://15.188.49.243/RecipeSharing_WebApp/baker/dashboard2.php"); // Redirect to the Baker page
           exit();
         } elseif($_SESSION['user_status'] == 'Deactivated'){
           $_SESSION['message_login'] = "Your account has been deactivated.";
           $_SESSION['input_email'] = $email;
           $_SESSION['input_password'] = $password;
-          header("Location: http://localhost/RecipeSharing_WebApp/login/signin.php");
+          header("Location: http://15.188.49.243/RecipeSharing_WebApp/login/signin.php");
           exit();
         }
       } else{
         $_SESSION['message_login'] = "Your account is not registered.";
         $_SESSION['input_email'] = $email;
         $_SESSION['input_password'] = $password;
-        header("Location: http://localhost/RecipeSharing_WebApp/login/signin.php");
+        header("Location: http://15.188.49.243/RecipeSharing_WebApp/login/signin.php");
         exit();
       }
     }
@@ -75,21 +75,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SimpleSweets Recipe Sharing Application</title>
-  <link rel="icon" type="image/jpg" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/cookielogo.png">
+  <link rel="icon" type="image/jpg" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/cookielogo.png">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Russo+One&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/assets/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/style.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/style.css">
   <style type="text/css">
   body{
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("http://localhost/RecipeSharing_WebApp/assets/dist/img/cake1.jpg") !important;
+    background-image: url("http://15.188.49.243/RecipeSharing_WebApp/assets/dist/img/cake1.jpg") !important;
     position: relative; 
     background-size: cover;
     background-position: center;    
@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   <div class="card bg-dark">
     <div class="card-header d-flex justify-content-center align-items-center" style="background: linear-gradient(140deg,  #fda41f, #e79821, #5562d8, #5562d8); box-shadow: 0px 1px 10px rgb(37, 37, 37);">
         <h1 style="font-family: Pacifico; color: #683f19;" class="brand-text pr-2">SimpleSweets</h1>
-        <img src="http://localhost/RecipeSharing_WebApp/assets/dist/img/cookielogo.png" class="img-circle rotate-in-center" style="width: 55px">
+        <img src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/img/cookielogo.png" class="img-circle rotate-in-center" style="width: 55px">
     </div>
     <div class="card-body">
       <div>
@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
           <button type="submit" name="submit" class="btn bg-orange btn-block py-2"><h5><b>Login</b></h5></button>
         </div>
         <p class="mb-1">
-        <a href="http://localhost/RecipeSharing_WebApp/RecipeHomepage/rcp_homepage.php" class="text-warning"><small>← Back to homepage</small></a>
+        <a href="http://15.188.49.243/RecipeSharing_WebApp/RecipeHomepage/rcp_homepage.php" class="text-warning"><small>← Back to homepage</small></a>
         </p>
       </form>
       <script>
@@ -173,15 +173,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   <!-- /.control-sidebar -->
 </div>
 <!-- jQuery -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/jquery/jquery.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- bs-custom-file-input -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/dist/js/adminlte.min.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="http://localhost/RecipeSharing_WebApp/assets/dist/js/demo.js"></script>
+<script src="http://15.188.49.243/RecipeSharing_WebApp/assets/dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
