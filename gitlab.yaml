@@ -1,0 +1,266 @@
+stages:
+  - validate
+  - test
+  - build
+  - deploy
+
+variables:
+  DEPLOY_PATH: /var/www/html
+  DB_NAME: taaza_db
+  DB_USER: root
+  EU_INSTANCE_IP: "18.198.188.215"
+  EU_VPC_ID: "vpc-xxxxx"
+  EU_SUBNET_ID: "subnet-xxxxx"
+  EU_AMI_ID: "ami-xxxxx"
+  EU_REGION: "eu-central-1"
+  US_INSTANCE_IP: "à_fournir"
+  US_VPC_ID: "à_fournir"
+  US_SUBNET_ID: "à_fournir"
+  US_AMI_ID: "à_fournir"
+  US_REGION: "us-east-1"
+  AP_INSTANCE_IP: "à_fournir"
+  AP_VPC_ID: "à_fournir"
+  AP_SUBNET_ID: "à_fournir"
+  AP_AMI_ID: "à_fournir"
+  AP_REGION: "ap-northeast-1"
+
+# Validation du code PHP
+lint:
+  stage: validate
+  image: php:8.2-cli
+  script:
+    - echo "Checking PHP syntax..."
+    - find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
+
+# Validation de la configuration Apache
+apache_config:
+  stage: validate
+  image: httpd:2.4
+  script:
+    - echo "Checking Apache configuration..."
+    - apache2ctl -t
+
+# Tests unitaires PHP
+phpunit:
+  stage: test
+  image: php:8.2-cli
+  before_script:
+    - apt-get update && apt-get install -y git unzip libzip-dev
+    - docker-php-ext-install zip mysqli
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install
+  script:
+    - echo "Running PHPUnit tests..."
+    - vendor/bin/phpunit --testdox
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+
+# Tests de sécurité
+security_check:
+  stage: test
+  image: php:8.2-cli
+  before_script:
+    - curl -sS https://get.symfony.com/cli/installer | bash
+    - mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
+  script:
+    - echo "Running security checks..."
+    - symfony security:check
+
+# Construction des assets
+build:
+  stage: build
+  image: composer:latest
+  script:
+    - echo "Installing dependencies..."
+    - composer install --no-dev --optimize-autoloader
+  artifacts:
+    paths:
+      - vendor/
+      - composer.lock
+    expire_in: 1 day
+
+# Template de déploiement
+.deploy_template: &deploy_template
+  image: alpine:latest
+  before_script:
+    - echo "Installing required packages..."
+    - apk add --no-cache openssh-client rsync mysql-client
+
+    - echo "Setting up SSH..."
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - cp terraform/webserver_key.pem ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo "StrictHostKeyChecking no" >> ~/.ssh/config
+  script:
+    - echo "Deploying to $REGION - Instance IP: $INSTANCE_IP"
+    - echo "VPC: $VPC_ID, Subnet: $SUBNET_ID, AMI: $AMI_ID"
+    
+    - echo "Copying application files..."
+    - rsync -avz --delete 
+      --exclude='.git' 
+      --exclude='terraform' 
+      --exclude='.gitlab-ci.yml'
+      --exclude='tests'
+      --exclude='phpunit.*'
+      ./ ubuntu@${INSTANCE_IP}:/tmp/app/
+    
+    - |
+      ssh ubuntu@${INSTANCE_IP} "
+        echo 'Setting up database...';
+        if ! sudo mysql -e 'USE ${DB_NAME}' 2>/dev/null; then
+          sudo mysql -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME};'
+          sudo mysql -e \"ALTER USER '${DB_USER}'@'localhost' IDENTIFIED WITH mysql_native_password BY '';\";
+          sudo mysql -e 'FLUSH PRIVILEGES;'
+          sudo mysql ${DB_NAME} < /tmp/app/database.sql
+        fi
+
+        echo 'Copying files to web root...';
+        sudo rm -rf ${DEPLOY_PATH}/*
+        sudo rsync -avz /tmp/app/ ${DEPLOY_PATH}/
+        sudo chown -R www-data:www-data ${DEPLOY_PATH}
+        sudo chmod -R 755 ${DEPLOY_PATH}
+        
+        sudo systemctl reload apache2;
+      "
+
+# Déploiement Europe
+deploy_eu:
+  <<: *deploy_template
+  stage: deploy
+  variables:
+    INSTANCE_IP: ${EU_INSTANCE_IP}
+    VPC_ID: ${EU_VPC_ID}
+    SUBNET_ID: ${EU_SUBNET_ID}
+    AMI_ID: ${EU_AMI_ID}
+    REGION: ${EU_REGION}
+  environment:
+    name: production_eu
+    url: http://${EU_INSTANCE_IP}
+  only:
+    - Ultimate_branch
+  when: manual
+
+# Déploiement US
+deploy_us:
+  <<: *deploy_template
+  stage: deploy
+  variables:
+    INSTANCE_IP: ${US_INSTANCE_IP}
+    VPC_ID: ${US_VPC_ID}
+    SUBNET_ID: ${US_SUBNET_ID}
+    AMI_ID: ${US_AMI_ID}
+    REGION: ${US_REGION}
+  environment:
+    name: production_us
+    url: http://${US_INSTANCE_IP}
+  only:
+    - Ultimate_branch
+  when: manual
+
+# Déploiement Asie
+deploy_ap:
+  <<: *deploy_template
+  stage: deploy
+  variables:
+    INSTANCE_IP: ${AP_INSTANCE_IP}
+    VPC_ID: ${AP_VPC_ID}
+    SUBNET_ID: ${AP_SUBNET_ID}
+    AMI_ID: ${AP_AMI_ID}
+    REGION: ${AP_REGION}
+  environment:
+    name: production_ap
+    url: http://${AP_INSTANCE_IP}
+  only:
+    - Ultimate_branch
+  when: manual
+
+# Déploiement de l'application
+deploy_app:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - echo "Installing required packages..."
+    - apk add --no-cache openssh-client rsync mysql-client
+
+    - echo "Setting up SSH..."
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - cp terraform/webserver_key.pem ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo "StrictHostKeyChecking no" >> ~/.ssh/config
+    
+    - echo "Testing SSH connection..."
+    - ssh -v ubuntu@${EU_INSTANCE_IP} "echo 'SSH connection successful'"
+    
+  script:
+    - echo "Current directory contents:"
+    - pwd
+    - ls -la
+    
+    - echo "Copying application files..."
+    - rsync -avz --delete 
+      --exclude='.git' 
+      --exclude='terraform' 
+      --exclude='.gitlab-ci.yml'
+      --exclude='tests'
+      --exclude='phpunit.*'
+      ./ ubuntu@${EU_INSTANCE_IP}:/tmp/app/
+    
+    - echo "Deploying to server..."
+    - |
+      ssh ubuntu@${EU_INSTANCE_IP} "
+        echo 'Current user and permissions:';
+        whoami;
+        groups;
+        
+        echo 'Checking /tmp/app contents:';
+        ls -la /tmp/app;
+        
+        echo 'Setting up database...';
+        if ! sudo mysql -e 'USE ${DB_NAME}' 2>/dev/null; then
+          sudo mysql -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME};'
+          sudo mysql -e \"ALTER USER '${DB_USER}'@'localhost' IDENTIFIED WITH mysql_native_password BY '';\";
+          sudo mysql -e 'FLUSH PRIVILEGES;'
+          sudo mysql ${DB_NAME} < /tmp/app/database.sql
+        fi
+
+        echo 'Copying files to web root...';
+        sudo rm -rf ${DEPLOY_PATH}/*
+        sudo rsync -avz /tmp/app/ ${DEPLOY_PATH}/
+        sudo chown -R www-data:www-data ${DEPLOY_PATH}
+        sudo chmod -R 755 ${DEPLOY_PATH}
+        
+        echo 'Cleaning cache...';
+        sudo rm -rf ${DEPLOY_PATH}/var/cache/*
+        
+        echo 'Checking Apache configuration...';
+        sudo apache2ctl -t
+        
+        echo 'Restarting Apache...';
+        sudo systemctl reload apache2;
+        
+        echo 'Final /var/www/html contents:';
+        ls -la ${DEPLOY_PATH}
+      "
+  environment:
+    name: production
+    url: http://${EU_INSTANCE_IP}
+  only:
+    - Ultimate_branch
+  when: manual
+
+# Nettoyage après déploiement
+cleanup:
+  stage: .post
+  script:
+    - echo "Cleaning up temporary files..."
+    - rm -rf vendor/
+    - rm -rf .composer-cache/
+  when: always
